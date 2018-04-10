@@ -64,5 +64,8 @@ This baseline also has low fairness: As discussed in our project proposal, the m
 \end{center}
 
 \section{Research Proposal}
+Our next steps are to implement the RiskSLIM algorithm to create scoring rules for improving fairness and interpretability in the credit scoring problem, while hopefully not losing too much accuracy.  We will compare our results against those of the baseline.  We chose to focus on RiskSLIM instead of SLIM, because we would prefer to have our scoring rules to output scores that correlate with the risk of defaulting on a loan.  If time allows, we may additionally implement SLIM to see if there is a tradeoff between encoding risk and having a higher AUC.  
+
+To use RiskSLIM, we will formulate a Mixed Integer Nonlinear Program (MINLP) and using the lattice plane cutting algorithm (LPCA) to optimize solutions.  Ustun and Rudin indicate that there are five constraint types that are available to encode in the MINLP.  To enforce fairness, we will use the following constraints that have to do with the 'Probability' type: Let there be a sensitive attribute $X$ (e.g. race) that can take on $k$ possible values $x_1, \ldots, x_k$ for all the individuals in a populations.  Let the proportion of individuals in the population with $X = x_i$ be $p_i$ for $i = 1, \ldots, k$.  Then, we will make sure that out of the people who are classified to successfully return their loan, around $p_i$ of them have $X = x_i$.  That is, our scoring rule will predict $Pr(\text{return loan} = \text{True}) \approx p_i$ when $X = x_i$.  Such a constraint will be easy to build into the algorithm using the existing framework provided by Ustun and Rudin.      
 
 \end{document}
