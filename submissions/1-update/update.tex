@@ -47,12 +47,13 @@
 In our final project, we apply the  Supersparse Linear Integer Model (SLIM) scoring system to make interpretable predictions of loan default risk. We begin by examining a simple neural network baseline model, which achieves reasonably high accuracies on our dataset, but falls short in terms of both interpretability and fairness, two important requirements for any credit scoring model. We then describe TODO
 
 \section{Baseline}
-Benchmark studies of classification algorithms for credit scoring discuss these models in the framework of both individual (e.g., CART, Linear support vector machine, Logistic Regression, Multilayer perceptron artificial neural network) and ensemble methods (e.g, Bagged decision trees, Simple average ensemble). To gain a preliminary gauge of the performance of a simple model on our dataset, we explore the use of Multilayer perceptron artificial neural networks.
 
 \subsection{Data} 
 We use the GMC dataset, which was provided by a financial institution for the ``Give me some credit'' Kaggle competition (\url{https://www.kaggle.com/c/GiveMeSomeCredit}). This comprises historical data on 250,000 borrowers, each quantified along 10 dimensions, including age and monthly income. Notably, this dataset does not include information on the borrowers' race or gender. We are considering using the German credit (GC) dataset from the UCI Library (Lichman, 2013) for future work, since it does include these features and may allow us to quantify fairness more accurately.
 
 \subsection{Neural Network Model} 
+Benchmark studies of classification algorithms for credit scoring discuss these models in the framework of both individual (e.g., CART, Linear support vector machine, Logistic Regression, Multilayer perceptron artificial neural network) and ensemble methods (e.g, Bagged decision trees, Simple average ensemble). To gain a preliminary gauge of the performance of a simple model on our dataset, we explore the use of Multilayer perceptron artificial neural networks.
+
 We used PyTorch to implement a single-layer, linear, feedforward neural net with hidden layer size 30 and ReLU activations. The model was trained using the Adam optimizer with learning rate 0.0001 over 30 epochs. Our vanilla model achieved an AUC score of 0.801831 on the Kaggle test set. However, while this model has reasonable predictive power, is not very interpretable to consumers: The model's classification process cannot be easily explained to or understood by consumers, and neither can the most important predictive factors can be
 intuitively identified to aid loan seekers in improving their profile. 
 
