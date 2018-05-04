@@ -1,0 +1,6 @@
+[submodule "risk-slim"]
+	path = risk-slim
+	url = https://github.com/ustunb/risk-slim
+[submodule "fair-classification"]
+	path = fair-classification
+	url = https://github.com/mbilalzafar/fair-classification.git
